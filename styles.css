@@ -1,0 +1,206 @@
+:root {
+  --bg-space: #01010c;
+  --panel-bg: #04041a;
+  --panel-border: #5cf2ff;
+  --primary-text: #f5f4d2;
+  --accent-gold: #f7cc53;
+  --accent-red: #ff5a49;
+  --accent-cyan: #00f0ff;
+  --shadow-neon: 0 0 8px rgba(0, 240, 255, 0.9), 0 0 18px rgba(92, 242, 255, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--primary-text);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Palatino Linotype", serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(247, 204, 83, 0.2), transparent 28%),
+    radial-gradient(circle at 50% 80%, rgba(255, 90, 73, 0.15), transparent 35%),
+    var(--bg-space);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #f7cc53, transparent),
+    radial-gradient(1px 1px at 90px 40px, #d7f9ff, transparent),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, transparent),
+    radial-gradient(1px 1px at 240px 180px, #f5f4d2, transparent);
+  background-size: 260px 220px;
+  animation: drift 120s linear infinite;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+}
+
+main,
+header,
+footer {
+  width: min(960px, 94vw);
+  margin: 1rem auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 1.6rem 1.2rem;
+}
+
+.hero h1 {
+  margin: 0.2rem 0;
+  color: var(--accent-gold);
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 10px rgba(247, 204, 83, 0.6);
+  font-family: "Copperplate", "Bookman", "Times New Roman", serif;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(8, 8, 35, 0.92), rgba(3, 3, 16, 0.94));
+  border: 2px solid var(--panel-border);
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shadow-neon);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+}
+
+h2,
+h3 {
+  font-family: "Bookman Old Style", "Garamond", serif;
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+}
+
+marquee {
+  margin-top: 0.8rem;
+  color: #fff;
+  font-weight: 700;
+  background: rgba(255, 90, 73, 0.18);
+  border: 1px solid rgba(255, 90, 73, 0.8);
+  padding: 0.35rem;
+}
+
+.hero-stats {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.8rem;
+}
+
+.stat {
+  border: 1px solid rgba(247, 204, 83, 0.7);
+  background: rgba(247, 204, 83, 0.08);
+  padding: 0.7rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.8rem;
+  color: #fff4bf;
+  text-transform: uppercase;
+}
+
+.value {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.timeline {
+  padding-left: 1.1rem;
+}
+
+.timeline li {
+  margin-bottom: 0.5rem;
+}
+
+.timeline span {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.formula {
+  border: 1px dotted rgba(92, 242, 255, 0.85);
+  background: rgba(0, 240, 255, 0.07);
+  padding: 0.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+}
+
+.grid article {
+  border: 1px solid rgba(255, 90, 73, 0.75);
+  background: rgba(255, 90, 73, 0.08);
+  padding: 0.8rem;
+}
+
+.signoff {
+  text-align: center;
+}
+
+.footer-panel {
+  text-align: center;
+  border-color: rgba(247, 204, 83, 0.9);
+}
+
+.tiny {
+  font-size: 0.8rem;
+}
+
+.blink {
+  animation: blink 1.2s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-220px);
+  }
+}
+
+@media (max-width: 700px) {
+  .panel {
+    padding: 0.9rem;
+  }
+
+  .hero h1 {
+    letter-spacing: 0.06em;
+  }
+}
